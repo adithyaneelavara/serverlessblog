@@ -1,6 +1,6 @@
 import boto3
 import os
-import json
+import simplejson as json
 from boto3.dynamodb.conditions import Key, Attr
 def runs_on_aws_lambda():
     """
@@ -15,6 +15,15 @@ if runs_on_aws_lambda():
 
 session = boto3.Session()
 
+
+class DecimalEncoder(json.JSONEncoder):
+    def _iterencode(self, o, markers=None):
+        if isinstance(o, decimal.Decimal):
+            # wanted a simple yield str(o) in the next line,
+            # but that would mean a yield on the line with super(...),
+            # which wouldn't work (see my comment below), so...
+            return (str(o) for o in [o])
+        return super(DecimalEncoder, self)._iterencode(o, markers)
 
 def lambda_handler(event, context):
     print(f'Event::{event}')
@@ -34,9 +43,12 @@ def lambda_handler(event, context):
         items = table.query(
             KeyConditionExpression=Key('id').eq(postId)
         )
+
+    response=items["Items"]
+    print(type(response))
     return {
         "statusCode": 200,
-        "body": items["Items"]
+        "body": json.dumps(response)
     }
   
 

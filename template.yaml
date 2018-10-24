@@ -13,7 +13,7 @@ Globals:
 
 Resources:
 
-    FirstFunction:
+    GetBlogPostFunction:
         Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
         Properties:
             CodeUri: get_posts/build/
@@ -27,7 +27,10 @@ Resources:
                     Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
                     Properties:
                         Path: /getPosts
-                        Method: GET 
+                        Method: GET
+                    Cors:
+                        AllowOrigin: "*"
+                        AllowMethods: "GET,POST,DELETE"
             # Policies: # Example inline policy
             #     - Version: "2012-10-17"
             #     Statement:
@@ -41,11 +44,7 @@ Resources:
                     DB_TABLE_NAME: blogposts
 Outputs:
 
-    FirstApigwURL:
-      Description: "API Gateway endpoint URL for Prod environment for First Function"
-      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/first/proxy"
-
     FirstFunction:
-      Description: "First Lambda Function ARN"
-      Value: !GetAtt FirstFunction.Arn
+      Description: "GetBlogPostFunction ARN"
+      Value: !GetAtt GetBlogPostFunction.Arn
 
