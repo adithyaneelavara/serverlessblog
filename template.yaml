@@ -28,17 +28,26 @@ Resources:
                     Properties:
                         Path: /getPosts
                         Method: GET
-                    Cors:
-                        AllowOrigin: "*"
-                        AllowMethods: "GET,POST,DELETE"
-            # Policies: # Example inline policy
-            #     - Version: "2012-10-17"
-            #     Statement:
-            #         - Effect: "Allow"
-            #         Action:
-            #             - "ssm:GetParameter"
-            #         Resource:
-            #             - "*"
+            Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+                Variables:
+                    DB_TABLE_NAME: blogposts
+    PutBlogPostFunction:
+        Type: AWS::Serverless::Function
+        Properties:
+            CodeUri: put_posts/build/
+            Handler: app.lambda_handler
+            Runtime: python3.6
+            Tracing: Active
+            Role: arn:aws:iam::945746314187:role/LambdaBlogPublish
+            Policies:
+                - AmazonDynamoDBReadOnlyAccess
+            Events:
+                PutPosts:
+                    Type: Api
+                    Properties:
+                        Path: /PutPosts
+                        Method: POST
+            
             Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
                 Variables:
                     DB_TABLE_NAME: blogposts
