@@ -1,7 +1,9 @@
 # serverlessblog
 
 A Serverless Blog Application
-
+![](
+https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiWlpGTHcvSGxEdU5xRkE1UGpFREQ4K09RUlRHRGp1cjY5R2xDMmJ4V2dRT25vVVBvU04vN3B1VVBYS3ZZa2Zyd0o4L3FjZklHRFliNVltNjJXaURGbG44PSIsIml2UGFyYW1ldGVyU3BlYyI6ImtadFRGZVF5NXpPb0dQUU0iLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
+)
 ## Requirements
 
 * AWS CLI already configured with at least PowerUser permission
