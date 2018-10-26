@@ -26,13 +26,13 @@ phases:
         - ./package.sh
       # - command
       # - command
-  post_build:
-    commands:
-       - ./deploy.sh
+  #post_build:
+    #commands:
+     #  - ./deploy.sh
       # - command
-#artifacts:
-  #files:
-    # - location
+artifacts:
+  files:
+    - packaged.yaml
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
