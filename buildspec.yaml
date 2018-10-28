@@ -26,9 +26,9 @@ phases:
         - ./package.sh
       # - command
       # - command
-  post_build:
-    commands:
-      - ./deploy.sh
+  #post_build:
+    #commands:
+     #  - ./deploy.sh
       # - command
 artifacts:
   files:

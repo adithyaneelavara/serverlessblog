@@ -28,6 +28,11 @@ Resources:
                     Properties:
                         Path: /getPosts
                         Method: GET
+                    Cors:
+                        X-Requested-With: "*"
+                        Access-Control-Allow-Origin: "*"
+                        Access-Control-Allow-Methods: POST,GET,OPTIONS
+                        Access-Control-Allow-Headers: Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with
             Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
                 Variables:
                     DB_TABLE_NAME: blogposts
@@ -47,7 +52,18 @@ Resources:
                     Properties:
                         Path: /PutPosts
                         Method: POST
-            
+                    Cors:
+                        X-Requested-With: "*"
+                        Access-Control-Allow-Origin: "*"
+                        Access-Control-Allow-Methods: POST,GET,OPTIONS
+                        Access-Control-Allow-Headers: Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with
+                    Auth:
+                        DefaultAuthorizer: MyCognitoAuth
+                        Authorizers:
+                            MyCognitoAuth: 
+                                UserPoolArn: arn:aws:cognito-idp:eu-west-1:945746314187:userpool/eu-west-1_3xwWUdykm
+                                Identity:
+                                    Header: REACT_APP
             Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
                 Variables:
                     DB_TABLE_NAME: blogposts
