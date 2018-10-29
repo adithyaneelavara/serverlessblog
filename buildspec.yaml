@@ -33,7 +33,7 @@ phases:
       # - command
 artifacts:
   files:
-    - ./packaged-sls.zip  
+    - ./packaged.yaml
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
