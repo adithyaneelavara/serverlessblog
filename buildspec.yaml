@@ -22,8 +22,13 @@ phases:
         - pip install pipenv==2018.6.25
         - pipenv run pip install pip==18.0
         - pipenv install
-        - ./build.sh
-        - ./package.sh
+        - pipenv lock -r > requirements.txt
+        - pip install -r requirements.txt -t  get_posts/build/
+        - cp -R get_posts/app.py get_posts/build/
+        - pipenv lock -r > requirements.txt
+        - pip install -r requirements.txt -t  put_posts/build/
+        - cp -R put_posts/app.py put_posts/build/
+        - aws cloudformation package  --template-file template.yaml --output-template-file packaged.yaml   --s3-bucket build.adithyaneelavara.info
               # - command
       # - command
   #post_build:
