@@ -22,9 +22,9 @@ phases:
         - pip install pipenv==2018.6.25
         - pipenv run pip install pip==18.0
         - pipenv install
-        - ./build.sh
-        - ./package.sh
-        - zip package-sls.zip packaged.yaml
+        - sudo ./build.sh
+        - sudo ./package.sh
+        - sudo zip package-sls.zip packaged.yaml
               # - command
       # - command
   #post_build:
@@ -33,7 +33,7 @@ phases:
       # - command
 artifacts:
   files:
-    - ./packaged-sls.zip
+    - ./packaged-sls.zip  
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
