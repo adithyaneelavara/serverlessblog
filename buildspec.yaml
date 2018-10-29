@@ -31,13 +31,13 @@ phases:
         - aws cloudformation package  --template-file template.yaml --output-template-file packaged.yaml   --s3-bucket build.adithyaneelavara.info
               # - command
       # - command
-  #post_build:
-    #commands:
-     #  - ./deploy.sh
+  post_build:
+    commands:
+       - aws cloudformation deploy --template-file ./packaged.yaml --capabilities CAPABILITY_IAM --stack-name serverlessblog
       # - command
 artifacts:
   files:
-    - ./packaged.yaml
+    # ./packaged.yaml
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
