@@ -24,7 +24,8 @@ phases:
         - pipenv install
         - ./build.sh
         - ./package.sh
-      # - command
+        - zip package-sls.zip packaged.yaml
+              # - command
       # - command
   #post_build:
     #commands:
@@ -32,7 +33,7 @@ phases:
       # - command
 artifacts:
   files:
-    - packaged.yaml
+    - ./packaged-sls.zip
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
