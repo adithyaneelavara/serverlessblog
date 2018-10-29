@@ -24,7 +24,6 @@ phases:
         - pipenv install
         - sudo ./build.sh
         - ./package.sh
-        - zip package-sls.zip packaged.yaml
               # - command
       # - command
   #post_build:
