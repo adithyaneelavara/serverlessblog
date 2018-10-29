@@ -23,8 +23,8 @@ phases:
         - pipenv run pip install pip==18.0
         - pipenv install
         - sudo ./build.sh
-        - sudo ./package.sh
-        - sudo zip package-sls.zip packaged.yaml
+        - ./package.sh
+        - zip package-sls.zip packaged.yaml
               # - command
       # - command
   #post_build:
